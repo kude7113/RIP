@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<div class="frame-4">
+    <div class="group-13">
+        <div class="relative-wrapper-one">
+            <a href="http://localhost:8080/home">
+                <img
+                        alt=""
+                        class="image-1"
+                        src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png"
+                />
+            </a>
+            <p class="gosavtoinspekcija">
+                ГОСАВТОИНСПЕКЦИЯ
+            </p>
+        </div>
+        <img
+                alt=""
+                class="image-6"
+                src="https://static.overlay-tech.com/assets/a3d45847-30bf-45d6-a6be-f42cf7f962a6.png"
+        />
+    </div>
+</div>
+<div>
+    <form class="input-group p-3" action="/home/search" method="get">
+        <input name="searchInput" type="text" class="form-control rounded-0 border border-primary border-3" placeholder="Введите название штрафа..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <button class="btn btn-primary rounded-0" type="submit" id="button-addon1">Button</button>
+    </form>
+</div>
+<div class="table-row">
+    {{ range . }}
+    <div class="card border border-primary border-3 rounded-0 text-center" id="{{ .Id }}" style="width: 18rem;">
+        <div class="p-3">
+            <img src="https://static.overlay-tech.com/assets/0f1491f2-f1e8-4849-b746-3e22c67166e9.png" class="card-img-top rounded-4" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ .Title }}</h5>
+            <p class="card-text">{{ .FullInfo }}</p>
+            <div>
+                <h5>{{ .Price }} ₽</h5>
+                <a href="http://localhost:8080/more" class="btn btn-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+
+</body>
+</html>

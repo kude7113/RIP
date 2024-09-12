@@ -3,19 +3,19 @@ package api
 import (
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Fine struct {
-	Id int 
-	Title string
+	Id       int
+	Title    string
 	FullInfo string
-	Price int
+	Price    int
 }
 
-
-func StartServer ()  {
+func StartServer() {
 	log.Println("Server start up")
 
 	var Fines = []Fine{
@@ -25,17 +25,50 @@ func StartServer ()  {
 		{Id: 4, Title: "Езда на самокате пьяным", FullInfo: "Запрещено передвигаться на электросамокате в нетрезвом виде.", Price: 30000},
 	}
 
+	var Orders = []Fine{
+		Fines[0],
+		Fines[1],
+		Fines[3],
+	}
+
 	r := gin.Default()
-	
 
 	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/home", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "boot.html", Fines)
+		c.HTML(http.StatusOK, "home.html", gin.H{
+			"fines": Fines,
+		})
 	})
 
 	r.GET("/more", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "boot.html", Fines)
+		c.HTML(http.StatusOK, "more.html", gin.H{
+			"fines": Fines,
+		})
+	})
+
+	r.GET("/home/search", func(c *gin.Context) {
+		searchText := c.Query("searchInput")
+		searchText = strings.ToLower(searchText)
+
+		var filteredFines []Fine
+		for _, Fine := range Fines {
+			fineTitle := strings.TrimSpace(strings.ToLower(Fine.Title))
+			if strings.HasPrefix(fineTitle, searchText) {
+				filteredFines = append(filteredFines, Fine)
+			}
+		}
+
+		// Возвращаем результаты поиска на страницу
+		c.HTML(http.StatusOK, "home.html", gin.H{
+			"fines":      filteredFines,
+			"searchText": c.Query("searchInput"),
+		})
+
+	})
+
+	r.GET("/order", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "order.html", Orders)
 	})
 
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
