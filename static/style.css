@@ -1,0 +1,209 @@
+/* Стили для хедера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: linear-gradient(to bottom, #2785B7, #165B84);
+    padding: 25px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 10px; /* Держим текст прижатым к эмблеме */
+}
+
+h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.emblem {
+    width: 120px;
+    height: auto;
+}
+
+.map {
+    position: absolute;
+    right: 20px;
+    width: 150px;
+    height: auto;
+}
+
+/* Стили для поля поиска и кнопки */
+form.input-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #2785B7;
+    border-radius: 0; /* Убираем закругления */
+    outline: none;
+}
+
+form.input-group button {
+    padding: 10px 20px;
+    background-color: #2785B7;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 0; /* Убираем закругления */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form.input-group button:hover {
+    background-color: #165B84;
+}
+
+/* Стили для карточек */
+.table-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    width: 250px;
+    border: 1px solid #2785B7;
+    border-radius: 0; /* Убираем скругление */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: white;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    padding: 10px; /* Добавляем отступ вокруг изображения */
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #2785B7;
+    border-radius: 5px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.card-body div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-body h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.card-body a {
+    text-decoration: none;
+    background-color: #2785B7;
+    color: white;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.card-body a:hover {
+    background-color: #165B84;
+}
+
+/* Стили для кнопки и цены */
+.card-body div h5 {
+    margin: 0;
+}
+
+.card-body a {
+    font-size: 14px;
+    font-weight: bold;
+}
+/* Стили для контейнера карточки */
+.detailed-card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #2785B7;
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для изображения карточки */
+.detailed-card-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #2785B7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+/* Стили для контента карточки */
+.detailed-card-content {
+    max-width: 500px;
+    text-align: left;
+}
+
+.detailed-card-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.detailed-card-content p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #333;
+}

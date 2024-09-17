@@ -3,6 +3,7 @@ package api
 import (
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -33,6 +34,8 @@ func StartServer() {
 
 	r := gin.Default()
 
+	r.Static("/static", "./static")
+
 	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/home", func(c *gin.Context) {
@@ -41,10 +44,32 @@ func StartServer() {
 		})
 	})
 
-	r.GET("/more", func(c *gin.Context) {
+	r.GET("/more/:id", func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.String(http.StatusBadRequest, "Invalid ID")
+			return
+		}
+
+		var fine *Fine
+
+		for _, f := range Fines {
+			if f.Id == id {
+				fine = &f
+				break
+			}
+		}
+
+		if fine == nil {
+			c.String(http.StatusNotFound, "Fine not found")
+			return
+		}
+
 		c.HTML(http.StatusOK, "more.html", gin.H{
-			"fines": Fines,
+			"fine": fine,
 		})
+
 	})
 
 	r.GET("/home/search", func(c *gin.Context) {
