@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
 
 <header>
     <div class="header-container">
-        <a href="http://localhost:8080/home"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
+        <a href="http://localhost:8080/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
         <div class="title-container">
             <h1>ГОСАВТОИНСПЕКЦИЯ</h1>
         </div>
@@ -16,29 +17,27 @@
     </div>
 </header>
 
-<div>
-    <form class="" action="/home/search" method="get">
-        <input name="searchInput" type="text" class="" placeholder="Введите название штрафа..." aria-label="Example text with button addon" aria-describedby="button-addon1">
-        <button class="" type="submit" id="button-addon1">Button</button>
-    </form>
-</div>
-<div class="table-row">
-    {{ range . }}
-    <div class="" id="{{ .Id }}" style="width: 18rem;">
-        <div class="">
-            <img src="https://static.overlay-tech.com/assets/0f1491f2-f1e8-4849-b746-3e22c67166e9.png" class="" alt="...">
+
+<div class="overview-table-row">
+    {{ range $fine, $count := .resolution.Fines }}
+    <div class="overview-card-container" id="{{ $fine.Id }}">
+        <div class="overview-card-image">
+            <img src="{{ $fine.Imge }}" class="overview-card-img" alt="...">
         </div>
-        <div class="">
-            <h5 class="">{{ .Title }}</h5>
-            <p class="">{{ .FullInfo }}</p>
-            <div>
-                <h5>{{ .Price }} ₽</h5>
-                <a href="http://localhost:8080/more" class="">Подробнее</a>
+        <div class="overview-card-content">
+            <h5 class="overview-card-title">{{ $fine.Title }}</h5>
+            <p class="overview-card-text">{{ $fine.FullInfo }}</p>
+            <div class="overview-card-footer">
+                <h5>{{ $fine.Price }} ₽</h5>
+                <p>Количество: {{ $count }}</p>
+                <a href="http://localhost:8080/more/{{ $fine.Id }}" class="overview-card-link">Подробнее</a>
             </div>
         </div>
     </div>
     {{ end }}
 </div>
+
+
 
 </body>
 </html>

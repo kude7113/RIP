@@ -9,7 +9,7 @@
 
 <header>
     <div class="header-container">
-        <a href="http://localhost:8080/home"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
+        <a href="http://localhost:8080/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
         <div class="title-container">
             <h1>ГОСАВТОИНСПЕКЦИЯ</h1>
         </div>
@@ -18,8 +18,8 @@
 </header>
 
 <div>
-    <form class="input-group" action="/home/search" method="get">
-        <input name="searchInput" type="text" value="{{ .searchText }}" placeholder="Введите название штрафа..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+    <form class="input-fines" action="/search" method="get">
+        <input name="searchFines" type="text" value="{{ .searchText }}" placeholder="Введите название штрафа..." aria-label="Example text with button addon" aria-describedby="button-addon1">
         <button type="submit" id="button-addon1">Button</button>
     </form>
 </div>
@@ -28,7 +28,7 @@
     {{ range .fines }}
     <div class="card" id="{{ .Id }}">
         <div class="card-image">
-            <img src="https://static.overlay-tech.com/assets/0f1491f2-f1e8-4849-b746-3e22c67166e9.png" alt="Картинка">
+            <img src="{{ .Imge }}" alt="Картинка">
         </div>
         <div class="card-body">
             <h5 class="card-title">{{ .Title }}</h5>
@@ -41,6 +41,10 @@
     </div>
     {{ end }}
 </div>
+
+<a href="http://localhost:8080/order/1" class="cart-icon">
+    <img src="https://www.svgrepo.com/show/133694/act.svg" alt="Корзина">
+</a>
 
 </body>
 </html>
