@@ -20,30 +20,29 @@
 <div>
     <form class="input-fines" action="/search" method="get">
         <input name="searchFines" type="text" value="{{ .searchText }}" placeholder="Введите название штрафа..." aria-label="Example text with button addon" aria-describedby="button-addon1">
-        <button type="submit" id="button-addon1">Button</button>
+        <button type="submit" id="button-addon1">Найти</button>
     </form>
 </div>
 
 <div class="table-row">
-    {{ range .fines }}
-    <div class="card" id="{{ .Id }}">
+    {{ range .fines }}    <div class="card" id="{{ .Id }}">
         <div class="card-image">
             <img src="{{ .Imge }}" alt="Картинка">
         </div>
         <div class="card-body">
             <h5 class="card-title">{{ .Title }}</h5>
-            <p class="card-text">{{ .FullInfo }}</p>
             <div>
                 <h5>{{ .Price }} ₽</h5>
-                <a href="http://localhost:8080/more/{{ .Id}}" class="">Подробнее</a>
+                <a href="http://localhost:8080/more/{{ .Id}}" >Подробнее</a>
             </div>
         </div>
     </div>
     {{ end }}
 </div>
-
+ 
 <a href="http://localhost:8080/order/1" class="cart-icon">
     <img src="https://www.svgrepo.com/show/133694/act.svg" alt="Корзина">
+    <span class="badge">{{ .number }}</span>
 </a>
 
 </body>

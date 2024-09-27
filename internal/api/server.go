@@ -15,6 +15,7 @@ type Fine struct {
 	FullInfo string
 	Price    int
 	Imge     string
+	DopInf   string
 }
 
 type Resolution struct {
@@ -26,10 +27,12 @@ func StartServer() {
 	log.Println("Server start up")
 
 	var Fines = []Fine{
-		{Id: 1, Title: "Проезд по пешеходному переходу", FullInfo: "Как и на велосипеде, на самокате запрещено ехать по пешеходным переходам — необходимо спешиться и катить СИМ в руках.", Price: 2000, Imge: "http://127.0.0.1:9000/fines-bucket/0.jpg"},
-		{Id: 2, Title: "Езда вдвоем на электросамокате", FullInfo: "На электросамокатах запрещено перевозить пассажиров, то есть ездить вдвоем на одном транспорте нельзя.", Price: 1500, Imge: "http://127.0.0.1:9000/fines-bucket/1.jpg"},
-		{Id: 3, Title: "Передача управления электросамокатом ребенку", FullInfo: "Водить арендные самокаты можно только с 18 лет.", Price: 5000, Imge: "http://127.0.0.1:9000/fines-bucket/2.jpg"},
-		{Id: 4, Title: "Езда на самокате пьяным", FullInfo: "Запрещено передвигаться на электросамокате в нетрезвом виде.", Price: 30000, Imge: "http://127.0.0.1:9000/fines-bucket/3.jpg"},
+		{Id: 1, Title: "Проезд по пешеходному переходу", FullInfo: "Как и на велосипеде, на самокате запрещено ехать по пешеходным переходам — необходимо спешиться и катить СИМ в руках.", Price: 2000, Imge: "http://127.0.0.1:9000/fines-bucket/3.png", DopInf: "Колличество:"},
+		{Id: 2, Title: "Езда вдвоем на электросамокате", FullInfo: "На электросамокатах запрещено перевозить пассажиров, то есть ездить вдвоем на одном транспорте нельзя.", Price: 1500, Imge: "http://127.0.0.1:9000/fines-bucket/4.png", DopInf: "Колличество людей на самокате:"},
+		{Id: 3, Title: "Передача управления электросамокатом ребенку", FullInfo: "Водить арендные самокаты можно только с 18 лет.", Price: 5000, Imge: "http://127.0.0.1:9000/fines-bucket/5.png", DopInf: "Возраст ребенка:"},
+		{Id: 4, Title: "Превышение скорости", FullInfo: "Запрещено передвигаться на электросамокате в нетрезвом виде.", Price: 30000, Imge: "http://127.0.0.1:9000/fines-bucket/2.png", DopInf: "Скорость:"},
+		{Id: 5, Title: "Езда на самокате пьяным", FullInfo: "Запрещено передвигаться на электросамокате в нетрезвом виде.", Price: 2000, Imge: "http://127.0.0.1:9000/fines-bucket/1.png", DopInf: "Промилле:"},
+		{Id: 6, Title: "Помеха в движении транспортного средства", FullInfo: "Запрещено передвигаться на электросамокате в нетрезвом виде.", Price: 4000, Imge: "http://127.0.0.1:9000/fines-bucket/6.png", DopInf: "Колличество транспортных средств:"},
 	}
 
 	var Resolutions = []Resolution{
@@ -49,8 +52,10 @@ func StartServer() {
 	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/", func(c *gin.Context) {
+
 		c.HTML(http.StatusOK, "home.html", gin.H{
-			"fines": Fines,
+			"fines":  Fines,
+			"number": len(Resolutions[0].Fines),
 		})
 	})
 

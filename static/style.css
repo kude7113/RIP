@@ -87,8 +87,11 @@ form.input-fines button:hover {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    gap: 40px;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 30px;
+
 }
 
 .card {
@@ -110,7 +113,6 @@ form.input-fines button:hover {
 .card-image img {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #2785B7;
     border-radius: 5px;
 }
 
@@ -119,6 +121,7 @@ form.input-fines button:hover {
 }
 
 .card-title {
+    height: 60px;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -152,7 +155,7 @@ form.input-fines button:hover {
 }
 
 .card-body a:hover {
-    background-color: #165B84;
+    background-color: #2785B7;
 }
 
 /* Стили для кнопки и цены */
@@ -169,7 +172,7 @@ form.input-fines button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #007bff;
+    border: 1px solid #2785B7;
     padding: 20px;
     margin: 20px auto;
     max-width: 900px; /* Ограничиваем максимальную ширину */
@@ -207,12 +210,14 @@ form.input-fines button:hover {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 30px;
 }
 
 .overview-card-container {
     display: flex;
-    border: 1px solid #007bff;
+    border: 1px solid #2785B7;
     padding: 15px;
     border-radius: 0; /* Острые края */
     align-items: center;
@@ -228,6 +233,8 @@ form.input-fines button:hover {
 
 .overview-card-image img{
     border-radius: 5px;
+    width: 135px;
+    height: 135px;
 }
 
 .overview-card-content {
@@ -253,7 +260,7 @@ form.input-fines button:hover {
 }
 
 .overview-card-link {
-    background-color: #007bff;
+    background-color: #2785B7;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
@@ -261,12 +268,12 @@ form.input-fines button:hover {
 }
 
 .overview-card-link:hover {
-    background-color: #0056b3;
+    background-color: #2785B7;
 }
 /* корзина */
 .cart-icon {
     position: fixed;
-    bottom: 20px; /* Отступ от нижнего края экрана */
+    bottom: 30px; /* Отступ от нижнего края экрана */
     left: 20px;   /* Отступ от левого края экрана */
     width: 50px;  /* Размер значка корзины */
     height: 50px;
@@ -274,8 +281,39 @@ form.input-fines button:hover {
 }
 
 .cart-icon img {
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
+    margin-bottom: 20px;
 }
 
+/* ввод даты и номера машины и даты правонарушения */
+form.input {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form.input input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #2785B7;
+    outline: none;
+}
+
+/* кружок с количеством на корзине */
+.cart-icon .badge {
+    position: absolute;
+    top: -13px; /* Настройте отступ сверху */
+    right: -13px; /* Настройте отступ справа */
+    background-color: #2785B7; /* Цвет кружка */
+    color: white; /* Цвет текста */
+    border-radius: 50%;
+    padding: 7px 7px; /* Размеры кружка */
+    font-size: 12px; /* Размер текста */
+    font-weight: bold; /* Толщина шрифта */
+}
