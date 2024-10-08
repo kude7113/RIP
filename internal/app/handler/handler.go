@@ -19,17 +19,16 @@ func NewHandler(l *logrus.Logger, r *repository.Repository) *Handler {
 }
 
 func (h *Handler) RegisterHandler(router *gin.Engine) {
-	router.GET("/", h.DeliveryItemList)
-	router.GET("/aboutcall/:card_id", h.DeliveryItemByID)
-	router.POST("/delete/:card_id", h.DeleteDeliveryItem)
+	router.GET("/", h.AllFines)
+	//router.GET("/more/:id", h.FinesByID)
+	//router.POST("/delete/:id", h.DeleteResolitionById)
+	//router.POST("/add/:id", h.AddFinesToResolution)
+	//router.GET("/resolution/:callrequest_id", h.GetMyCallCards)
 }
 
 func (h *Handler) RegisterStatic(router *gin.Engine) {
 	router.LoadHTMLGlob("templates/*")
 	router.Static("/static", "./static")
-	router.Static("/css", "./static")
-	router.Static("/img", "./static")
-
 }
 
 func (h *Handler) errorHandler(ctx *gin.Context, errorStatusCode int, err error) {
