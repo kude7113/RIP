@@ -9,7 +9,7 @@
 
 <header>
     <div class="header-container">
-        <a href="http://localhost:8080/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
+        <a href="http://localhost:8000/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
         <div class="title-container">
             <h1>ГОСАВТОИНСПЕКЦИЯ</h1>
         </div>
@@ -18,14 +18,15 @@
 </header>
 
 <div>
-    <form class="input-fines" action="/search" method="get">
+    <form class="input-fines" action="/">
         <input name="searchFines" type="text" value="{{ .searchText }}" placeholder="Введите название штрафа..." aria-label="Example text with button addon" aria-describedby="button-addon1">
         <button type="submit" id="button-addon1">Найти</button>
     </form>
 </div>
 
 <div class="table-row">
-    {{ range .fines }}    <div class="card" id="{{ .Id }}">
+    {{ range .fines }}
+    <div class="card" id="{{ .Fine_ID }}">
         <div class="card-image">
             <img src="{{ .Imge }}" alt="Картинка">
         </div>
@@ -33,14 +34,20 @@
             <h5 class="card-title">{{ .Title }}</h5>
             <div>
                 <h5>{{ .Price }} ₽</h5>
-                <a href="http://localhost:8080/more/{{ .Id}}" >Подробнее</a>
+                <a class="more" href="http://localhost:8000/more/{{ .Fine_ID }}" >Подробнее</a>
             </div>
+            <!-- Новая кнопка "Добавить в постановление" -->
+            <form action="/add/{{ .Fine_ID }}" method="POST" style="display:inline;">
+                <button type="submit" class="add-to-order">Добавить</button>
+            </form>
+
         </div>
     </div>
     {{ end }}
 </div>
 
-<a href="http://localhost:8080/order/1" class="cart-icon">
+
+<a id="{{ .resID }}" href="http://localhost:8000/resolution/{{ .resID}}" class="cart-icon">
     <img src="https://www.svgrepo.com/show/133694/act.svg" alt="Корзина">
     <span class="badge">{{ .number }}</span>
 </a>

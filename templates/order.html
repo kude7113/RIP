@@ -20,29 +20,29 @@
 
 <div>
     <form class="input" action="/search" method="get">
-        <input name="searchFines" type="text" value="{{ .searchText }}" placeholder="Номер транспортного средства..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input name="searchFines" type="text" value="" placeholder="Номер транспортного средства..." aria-label="Example text with button addon" aria-describedby="button-addon1">
     </form>
 </div>
 
 <div>
     <form class="input" action="/search" method="get">
-        <input name="searchFines" type="text" value="{{ .searchText }}" placeholder="Дата и время правонарушения..." aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <input name="searchFines" type="text" value="" placeholder="Дата и время правонарушения..." aria-label="Example text with button addon" aria-describedby="button-addon1">
     </form>
 </div>
 
-<div class="overview-table-row">
-    {{ range $fine, $count := .resolution.Fines }}
-    <div class="overview-card-container" id="{{ $fine.Id }}">
+<div class="overview-table-row" id="resID">
+    {{ range .fine}}
+    <div class="overview-card-container" id="{{ .Fine_ID }}">
         <div class="overview-card-image">
-            <img src="{{ $fine.Imge }}" class="overview-card-imge" alt="...">
+            <img src="{{ .Imge }}" class="overview-card-imge" alt="...">
         </div>
         <div class="overview-card-content">
-            <h5 class="overview-card-title">{{ $fine.Title }}</h5>
-            <p class="overview-card-text">{{ $fine.FullInfo }}</p>
+            <h5 class="overview-card-title">{{ .Title }}</h5>
+            <p class="overview-card-text">{{ .FullInf }}</p>
             <div class="overview-card-footer">
-                <h5>{{ $fine.Price }} ₽</h5>
-                <p>{{ $fine.DopInf }} {{ $count }}</p>
-                <a href="http://localhost:8080/more/{{ $fine.Id }}" class="overview-card-link">Подробнее</a>
+                <h5>{{ .Price }} ₽</h5>
+                <p>{{ .DopInf }} {{ .Count }}</p>
+                <a href="http://localhost:8080/more/{{ .Fine_ID }}" class="overview-card-link">Подробнее</a>
             </div>
         </div>
     </div>

@@ -20,10 +20,10 @@ func NewHandler(l *logrus.Logger, r *repository.Repository) *Handler {
 
 func (h *Handler) RegisterHandler(router *gin.Engine) {
 	router.GET("/", h.AllFines)
-	//router.GET("/more/:id", h.FinesByID)
-	//router.POST("/delete/:id", h.DeleteResolitionById)
-	//router.POST("/add/:id", h.AddFinesToResolution)
-	//router.GET("/resolution/:callrequest_id", h.GetMyCallCards)
+	router.GET("/more/:id", h.FinesByID)
+	//router.POST("/delete/:id", h.DeleteResolution)
+	router.POST("/add/:id", h.AddFinesToRes)
+	router.GET("/resolution/:id", h.GetResolution)
 }
 
 func (h *Handler) RegisterStatic(router *gin.Engine) {

@@ -146,7 +146,7 @@ form.input-fines button:hover {
     color: #000;
 }
 
-.card-body a {
+.more {
     text-decoration: none;
     background-color: #2785B7;
     color: white;
@@ -154,7 +154,7 @@ form.input-fines button:hover {
     transition: background-color 0.3s ease;
 }
 
-.card-body a:hover {
+.more {
     background-color: #2785B7;
 }
 
@@ -167,6 +167,33 @@ form.input-fines button:hover {
     font-size: 14px;
     font-weight: bold;
 }
+
+/* Стили для кнопки "Добавить в постановление" */
+form .add-to-order {
+    text-decoration: none;
+    border: 2px solid #2785B7; /* Синий ободок */
+    background-color: transparent; /* Прозрачный фон */
+    color: #2785B7; /* Синий текст */
+    padding: 8px 15px;
+    margin-top: 10px; /* Отступ сверху */
+    display: block; /* Кнопка занимает всю ширину */
+    width: 100%; /* Занимает 100% ширины карточки */
+    text-align: center; /* Выравнивание текста по центру */
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box; /* Учитываем padding и границу в ширине */
+    cursor: pointer; /* Добавляем курсор как у ссылки */
+    background: none; /* Убираем стандартный фон кнопки */
+    border-radius: 0; /* Убираем стандартные скругления кнопки, если они есть */
+}
+
+form .add-to-order:hover {
+    background-color: #2785B7; /* Синий фон при наведении */
+    color: white; /* Белый текст при наведении */
+}
+
+
 /* Стили для контейнера карточки */
 .detailed-card {
     display: flex;

@@ -9,7 +9,7 @@ type Resolutions struct {
 	Status            string `gorm:"type:varchar(255)"`
 	Date_Created      time.Time
 	Car_License_Plate string `gorm:"type:varchar(255)"`
-	User_id           string `gorm:"foreignKey:User_ID"`
+	User_ID           int    `gorm:"foreignKey:User_ID"`
 }
 
 const (

@@ -2,3 +2,4 @@ DROP TABLE fines CASCADE;
 DROP TABLE fine_resolutions CASCADE;
 DROP TABLE users CASCADE;
 DROP TABLE resolutions CASCADE;
+

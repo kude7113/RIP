@@ -10,7 +10,7 @@
 
 <header>
     <div class="header-container">
-        <a href="http://localhost:8080/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
+        <a href="http://localhost:8000/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
         <div class="title-container">
             <h1>ГОСАВТОИНСПЕКЦИЯ</h1>
         </div>
@@ -24,13 +24,10 @@
     </div>
     <div class="detailed-card-content">
         <h2>{{ .fine.Title }}</h2>
-        <p>{{ .fine.FullInfo }}</p>
+        <p>{{ .fine.FullInf }}</p>
         <p>Штраф: <strong>{{ .fine.Price }} ₽</strong></p>
     </div>
 </div>
-
-
-
 
 </body>
 </html>
