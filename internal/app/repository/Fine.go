@@ -124,6 +124,11 @@ func (r *Repository) AddFinesToResolution(userID, fineID int) error {
 }
 
 func (r *Repository) GetFinesInResolutionById(resID int) (*[]FinesWithCount, error) {
+	println()
+	if err := r.db.Model(&ds.Resolutions{}).Where("resolution_id = ? AND Status = ?", resID, ds.DraftStatus).First(&ds.Resolutions{}).Error; err != nil {
+		r.logger.Infof("Found penis")
+		return nil, err
+	}
 	var finesWithCount []FinesWithCount
 
 	// Получаем все записи Fine_Resolution для заданного resID
@@ -156,4 +161,18 @@ func (r *Repository) GetFinesInResolutionById(resID int) (*[]FinesWithCount, err
 	}
 
 	return &finesWithCount, nil
+}
+
+func (r *Repository) DeleteResolutionById(resID int) error {
+	if err := r.db.Delete(&ds.Fine_Resolution{}, resID).Error; err != nil {
+		return err
+	}
+
+	err := r.db.Model(&ds.Resolutions{}).
+		Where("resolution_id = ?", resID).
+		Update("status", ds.DeletedStatus).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }

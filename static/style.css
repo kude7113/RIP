@@ -344,3 +344,35 @@ form.input input {
     font-size: 12px; /* Размер текста */
     font-weight: bold; /* Толщина шрифта */
 }
+
+/* Стили для кнопки Удалить */
+form .delete-btn {
+    text-decoration: none;
+    border: 2px solid #2785B7; /* Синий ободок */
+    background-color: transparent; /* Прозрачный фон */
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 50%; /* Скругляем кнопку до круглой формы */
+    margin: 0 auto; /* Центрирование кнопки по горизонтали */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 40px; /* Отступ снизу */
+}
+
+form .delete-btn:hover {
+    background-color: #2785B7; /* Синий фон при наведении */
+    color: white;
+}
+
+form .delete-btn img {
+    width: 24px;
+    height: 24px;
+}

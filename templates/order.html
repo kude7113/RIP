@@ -9,7 +9,7 @@
 
 <header>
     <div class="header-container">
-        <a href="http://localhost:8080/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
+        <a href="http://localhost:8000/"> <img class="emblem" src="https://static.overlay-tech.com/assets/dd2ad8e5-ef75-4300-baa7-e5030a76e79c.png" alt="Эмблема"></a>
         <div class="title-container">
             <h1>ГОСАВТОИНСПЕКЦИЯ</h1>
         </div>
@@ -30,7 +30,7 @@
     </form>
 </div>
 
-<div class="overview-table-row" id="resID">
+<div class="overview-table-row" id="{{ .resID }}">
     {{ range .fine}}
     <div class="overview-card-container" id="{{ .Fine_ID }}">
         <div class="overview-card-image">
@@ -42,11 +42,17 @@
             <div class="overview-card-footer">
                 <h5>{{ .Price }} ₽</h5>
                 <p>{{ .DopInf }} {{ .Count }}</p>
-                <a href="http://localhost:8080/more/{{ .Fine_ID }}" class="overview-card-link">Подробнее</a>
+                <a href="http://localhost:8000/more/{{ .Fine_ID }}" class="overview-card-link">Подробнее</a>
             </div>
         </div>
     </div>
     {{ end }}
+
+    <form action="/delete/{{ .resID }}" method="POST" class="delete-form">
+        <button type="submit" class="delete-btn">
+            <img src="https://www.svgrepo.com/show/488897/delete-2.svg" alt="Удалить" class="delete-icon">
+        </button>
+    </form>
 </div>
 
 

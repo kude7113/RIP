@@ -97,7 +97,9 @@ func (h *Handler) GetResolution(ctx *gin.Context) {
 	}
 
 	finesWithCount, err := h.Repository.GetFinesInResolutionById(resID)
+	println(err)
 	if err != nil {
+		ctx.Redirect(http.StatusFound, "/")
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -106,4 +108,18 @@ func (h *Handler) GetResolution(ctx *gin.Context) {
 		"fine":  finesWithCount,
 		"resID": resID,
 	})
+}
+
+func (h *Handler) DeleteResolution(ctx *gin.Context) {
+	resID, err := strconv.Atoi(ctx.Param("id"))
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "invalid resID"})
+	}
+
+	err = h.Repository.DeleteResolutionById(resID)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	}
+
+	ctx.Redirect(http.StatusFound, "/")
 }
