@@ -107,7 +107,7 @@ func StartServer() {
 
 	})
 
-	r.GET("/order/:id", func(c *gin.Context) {
+	r.GET("/resolution/:id", func(c *gin.Context) {
 		id, err := strconv.Atoi(c.Param("id"))
 
 		if err != nil {
